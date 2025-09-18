@@ -1,0 +1,12 @@
+{
+  "name": "YAIM0425-i5MOD01-lane-splitters",
+  "version": "0.0.1",
+  "title": "YAIM0425 i5MOD01 Lane splitters",
+  "author": "YAIM0425",
+  "factorio_version": "2.0",
+  "description": "Create dividers the size of a line. [[I accept suggestions]]",
+  "homepage": "https://github.com/yaim0425/YAIM0425-i5MOD01-lane-splitters",
+  "dependencies": [
+    "YAIM0425-i5MOD50-core"
+  ]
+}
