@@ -101,11 +101,11 @@ function This_MOD.setting_mod()
     --- Valores de la referencia en este MOD
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    --- Tiempo de creación de las recetas
-    This_MOD.time = This_MOD.setting.time
-    --- Min. 1 (1s)
-    --- Max. 65000 (18h)
-    --- Def. 300 (5m)
+    --- Tipos a afectar
+    This_MOD.types = {
+        ["transport-belt"] = true,
+        ["splitter"] = true
+    }
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
