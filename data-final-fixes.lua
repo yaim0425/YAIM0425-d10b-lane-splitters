@@ -422,11 +422,30 @@ function This_MOD.create_recipe(space)
     local Order = tonumber(Recipe.order) + 1
     Recipe.order = GMOD.pad_left_zeros(#Recipe.order, Order)
 
-    -- Recipe.ingredients = { {
-    --     type = "item",
-    --     name = space.item.name,
-    --     amount = 1
-    -- } }
+    local function validate(ingredient)
+        for _, values in pairs({
+            This_MOD.to_be_processed,
+            This_MOD.processed
+        }) do
+            for _, value in pairs(values) do
+                if value[ingredient.name] then
+                    local That_MOD =
+                        GMOD.get_id_and_name(ingredient.name) or
+                        { ids = "-", name = ingredient.name }
+
+                    return
+                        GMOD.name .. That_MOD.ids ..
+                        This_MOD.id .. "-" ..
+                        That_MOD.name
+                end
+            end
+        end
+        return ingredient.name
+    end
+
+    for _, ingredient in pairs(Recipe.ingredients) do
+        ingredient.name = validate(ingredient)
+    end
 
     Recipe.results = { {
         type = "item",
