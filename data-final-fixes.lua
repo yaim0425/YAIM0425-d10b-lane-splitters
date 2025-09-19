@@ -103,7 +103,7 @@ function This_MOD.setting_mod()
 
     --- Tipos a afectar
     This_MOD.types = {
-        ["transport-belt"] = true,
+        -- ["transport-belt"] = true,
         ["splitter"] = true
     }
 
@@ -144,6 +144,12 @@ function This_MOD.get_elements()
             return
         end
 
+        --- Buscar la cinta
+        local Belt = GMOD.get_tables(
+            data.raw["transport-belt"], "speed", entity.speed
+        )
+        if not Belt then return end
+
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 
@@ -157,6 +163,7 @@ function This_MOD.get_elements()
         local Space = {}
         Space.item = item
         Space.entity = entity
+        Space.belt = Belt[1]
 
         Space.recipe = GMOD.recipes[Space.item.name]
         Space.tech = GMOD.get_technology(Space.recipe)
