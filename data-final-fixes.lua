@@ -91,6 +91,14 @@ function This_MOD.setting_mod()
     --- Cargar la configuración
     This_MOD.setting = GMOD.setting[This_MOD.id]
 
+    --- Indicador del mod
+    This_MOD.indicator = GMOD.copy(This_MOD.lane_splitter.icons[2])
+    This_MOD.indicator.icon = data.raw["simple-entity"]["parameter-1"].icons[1].icon
+
+    This_MOD.indicator_tech = GMOD.copy(This_MOD.indicator)
+    This_MOD.indicator_tech.shift = { 25, -25 }
+    This_MOD.indicator_tech.scale = 1
+
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
 
@@ -109,14 +117,6 @@ function This_MOD.setting_mod()
 
     --- Entidad de referencia
     This_MOD.lane_splitter = data.raw["lane-splitter"]["lane-splitter"]
-
-    --- Indicador de la entidad
-    This_MOD.indicator = GMOD.copy(This_MOD.lane_splitter.icons[2])
-    This_MOD.indicator.icon = data.raw["simple-entity"]["parameter-1"].icons[1].icon
-
-    This_MOD.indicator_tech = GMOD.copy(This_MOD.indicator)
-    This_MOD.indicator_tech.shift = { 25, -25 }
-    This_MOD.indicator_tech.scale = 1
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
