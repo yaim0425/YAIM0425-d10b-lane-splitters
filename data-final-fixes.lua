@@ -422,11 +422,11 @@ function This_MOD.create_recipe(space)
     local Order = tonumber(Recipe.order) + 1
     Recipe.order = GMOD.pad_left_zeros(#Recipe.order, Order)
 
-    Recipe.ingredients = { {
-        type = "item",
-        name = space.item.name,
-        amount = 1
-    } }
+    -- Recipe.ingredients = { {
+    --     type = "item",
+    --     name = space.item.name,
+    --     amount = 1
+    -- } }
 
     Recipe.results = { {
         type = "item",
