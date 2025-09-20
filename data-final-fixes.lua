@@ -319,8 +319,8 @@ function This_MOD.create_entity(space)
     end
 
     for _, propiety in pairs({ "structure", "structure_patch" }) do
-        for key, newTable in pairs(Entity[propiety]) do
-            local oldTable = This_MOD.lane_splitter[propiety][key]
+        for key, newTable in pairs(Entity[propiety] or {}) do
+            local oldTable = This_MOD.lane_splitter[propiety][key] or {}
             newTable.shift = oldTable.shift
             newTable.scale = oldTable.scale
         end
