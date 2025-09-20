@@ -502,8 +502,8 @@ function This_MOD.create_tech(space)
     Tech.icons = GMOD.copy(space.item.icons)
     table.insert(Tech.icons, This_MOD.indicator_tech)
 
-    Tech.localised_name = space.item.localised_name
-    Tech.localised_description = nil
+    Tech.localised_name = GMOD.copy(space.entity.localised_name)
+    Tech.localised_description = { "" }
 
     Tech.prerequisites = { space.tech.name }
 
