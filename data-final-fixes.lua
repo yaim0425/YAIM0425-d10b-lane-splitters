@@ -141,24 +141,23 @@ function This_MOD.get_elements()
 
         --- Validar el item
         if not item then return end
+        if GMOD.is_hidde(item) then return end
 
         --- Validar el tipo
         if entity.type ~= "splitter" then return end
+        if GMOD.is_hidde(entity) then return end
 
         --- Validar si ya fue procesado
-        local Name
-        repeat
-            local That_MOD =
-                GMOD.get_id_and_name(entity.name) or
-                { ids = "-", name = entity.name }
+        local That_MOD =
+            GMOD.get_id_and_name(entity.name) or
+            { ids = "-", name = entity.name }
 
-            Name =
-                GMOD.name .. That_MOD.ids ..
-                This_MOD.id .. "-" ..
-                That_MOD.name
+        local Name =
+            GMOD.name .. That_MOD.ids ..
+            This_MOD.id .. "-" ..
+            That_MOD.name
 
-            if GMOD.entities[Name] ~= nil then return end
-        until true
+        if GMOD.entities[Name] ~= nil then return end
 
         --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -205,8 +204,8 @@ function This_MOD.get_elements()
     --- Buscar las entidades a afectar
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
-    for item_name, entity in pairs(GMOD.entities) do
-        valide_entity(GMOD.items[item_name], entity)
+    for _, entity in pairs(data.raw.splitter) do
+        valide_entity(GMOD.get_item_create(entity, "place_result"), entity)
     end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
