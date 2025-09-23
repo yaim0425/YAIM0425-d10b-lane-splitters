@@ -318,6 +318,10 @@ function This_MOD.create_entity(space)
     --- Elimnar propiedades inecesarias
     Entity.factoriopedia_simulation = nil
 
+    --- Cambiar icono
+    Entity.icons = GMOD.copy(space.item.icons)
+    table.insert(Entity.icons, This_MOD.indicator)
+
     --- Copiar algunos valores
     for _, propiety in pairs({
         "collision_box",
@@ -372,19 +376,6 @@ function This_MOD.create_entity(space)
             end
         end
     end)()
-
-    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
-
-
-
-
-    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-    --- Agregar los indicadores del mod
-    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
-    Entity.icons = GMOD.copy(space.item.icons)
-    table.insert(Entity.icons, This_MOD.indicator)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
