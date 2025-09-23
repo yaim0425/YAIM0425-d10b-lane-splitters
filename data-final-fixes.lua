@@ -444,7 +444,7 @@ function This_MOD.create_recipe(space)
     --- Productividad
     Recipe.maximum_productivity = 1000000
 
-    --- Icono
+    --- Cambiar icono
     Recipe.icons = GMOD.copy(space.item.icons)
     table.insert(Recipe.icons, This_MOD.indicator)
 
@@ -547,7 +547,7 @@ function This_MOD.create_tech(space)
     Tech.localised_name = GMOD.copy(space.entity.localised_name)
     Tech.localised_description = GMOD.copy(This_MOD.lane_splitter.localised_description)
 
-    --- Icono
+    --- Cambiar icono
     Tech.icons = GMOD.copy(space.item.icons)
     table.insert(Tech.icons, This_MOD.indicator_tech)
 
