@@ -83,7 +83,7 @@ function This_MOD.setting_mod()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     --- Cargar la configuración
-    This_MOD.setting = GMOD.setting[This_MOD.id]
+    This_MOD.setting = GMOD.setting[This_MOD.id] or {}
 
     --- Indicador del mod
     This_MOD.indicator = {
@@ -106,12 +106,6 @@ function This_MOD.setting_mod()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     --- Valores de la referencia en este MOD
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-
-    --- Tipos a afectar
-    This_MOD.types = {
-        -- ["transport-belt"] = true,
-        ["splitter"] = true
-    }
 
     --- Entidad de referencia
     This_MOD.lane_splitter = data.raw["lane-splitter"]["lane-splitter"]
@@ -219,7 +213,6 @@ function This_MOD.create_item(space)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     if not space.item then return end
-    if GMOD.items[space.name] then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -251,7 +244,7 @@ function This_MOD.create_item(space)
     Item.localised_description = GMOD.copy(This_MOD.lane_splitter.localised_description)
 
     --- Entidad a crear
-    Item.place_result = Item.name
+    Item.place_result = space.name
 
     --- Agregar indicador del MOD
     table.insert(Item.icons, This_MOD.indicator)
@@ -281,7 +274,6 @@ function This_MOD.create_entity(space)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     if not space.entity then return end
-    if GMOD.entities[space.name] then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -342,7 +334,7 @@ function This_MOD.create_entity(space)
     --- Objeto a minar
     Entity.minable.results = { {
         type = "item",
-        name = Entity.name,
+        name = space.name,
         amount = 1
     } }
 
@@ -398,7 +390,6 @@ function This_MOD.create_recipe(space)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     if not space.recipe then return end
-    if data.raw.recipe[space.name] then return end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -483,7 +474,7 @@ function This_MOD.create_recipe(space)
     --- Resultados
     Recipe.results = { {
         type = "item",
-        name = Recipe.name,
+        name = space.name,
         amount = 1
     } }
 
