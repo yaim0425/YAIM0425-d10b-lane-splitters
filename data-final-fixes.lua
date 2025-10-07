@@ -119,7 +119,6 @@ function This_MOD.get_elements()
         if GMOD.is_hidde(item) then return end
 
         --- Validar el tipo
-        if entity.type ~= "splitter" then return end
         if GMOD.is_hidde(entity) then return end
 
         --- Validar si ya fue procesado
