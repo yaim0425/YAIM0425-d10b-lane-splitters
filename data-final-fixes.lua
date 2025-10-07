@@ -70,7 +70,6 @@ function This_MOD.reference_values()
     --- Indicador del mod
     This_MOD.indicator = {
         icon = data.raw["simple-entity"]["parameter-1"].icons[1].icon,
-        icon_size = 64,
         scale = 0.25,
         shift = { 8, -8 }
     }
