@@ -230,7 +230,7 @@ function This_MOD.create_item(space)
     table.insert(Item.icons, This_MOD.indicator)
 
     --- Actualizar Order
-    local Order = tonumber(Item.order) + 1
+    local Order = tonumber(Item.order) + 1 * (10 ^ (#Item.order - 1))
     Item.order = GMOD.pad_left_zeros(#Item.order, Order)
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
