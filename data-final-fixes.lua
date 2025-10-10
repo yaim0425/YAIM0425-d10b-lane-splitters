@@ -31,6 +31,7 @@ function This_MOD.start()
             --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
             --- Crear los elementos
+            This_MOD.create_subgroup(space)
             This_MOD.create_item(space)
             This_MOD.create_entity(space)
             This_MOD.create_recipe(space)
@@ -90,6 +91,10 @@ function This_MOD.reference_values()
 
     --- Entidad de referencia
     This_MOD.lane_splitter = data.raw["lane-splitter"]["lane-splitter"]
+
+    --- Subgrupo
+    This_MOD.new_subgroup = This_MOD.prefix .. This_MOD.name
+    This_MOD.old_subgroup = GMOD.items["splitter"].subgroup
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 end
@@ -187,6 +192,30 @@ end
 
 ---------------------------------------------------------------------------
 
+function This_MOD.create_subgroup(space)
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    --- Validación
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    if not space.item then return end
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+
+
+
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    --- Crear un nuevo subgrupo
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    local Old = This_MOD.old_subgroup
+    local New = This_MOD.new_subgroup
+    GMOD.duplicate_subgroup(Old, New)
+
+    --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+end
+
 function This_MOD.create_item(space)
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     --- Validación
@@ -229,9 +258,8 @@ function This_MOD.create_item(space)
     --- Agregar indicador del MOD
     table.insert(Item.icons, This_MOD.indicator)
 
-    --- Actualizar Order
-    local Order = tonumber(Item.order) + 1 * (10 ^ (#Item.order - 1))
-    Item.order = GMOD.pad_left_zeros(#Item.order, Order)
+    --- Actualizar el subgrupo
+    Item.subgroup = This_MOD.new_subgroup
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
