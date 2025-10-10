@@ -179,7 +179,7 @@ function This_MOD.get_elements()
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
     for _, entity in pairs(data.raw.splitter) do
-        valide_entity(GMOD.get_item_create(entity, "place_result"), entity)
+        valide_entity(GMOD.get_item_create(entity, GMOD.defines.place_result), entity)
     end
 
     --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
