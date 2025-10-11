@@ -544,6 +544,11 @@ function This_MOD.create_tech(space)
 
     --- Tech previas
     Tech.prerequisites = { space.tech.name }
+    for _, ingredient in pairs(data.raw.recipe[space.name].ingredients) do
+        if GMOD.has_id(ingredient.name, This_MOD.id) then
+            Tech.prerequisites = { ingredient.name .. "-tech" }
+        end
+    end
 
     --- Efecto de la tech
     Tech.effects = { {
