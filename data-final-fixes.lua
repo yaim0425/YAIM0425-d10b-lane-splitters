@@ -441,9 +441,8 @@ function This_MOD.create_recipe(space)
     --- Habilitar la receta
     Recipe.enabled = space.tech == nil
 
-    --- Actualizar Order
-    local Order = tonumber(Recipe.order) + 1
-    Recipe.order = GMOD.pad_left_zeros(#Recipe.order, Order)
+    --- Actualizar el subgrupo
+    Recipe.subgroup = This_MOD.new_subgroup
 
     --- Ingredientes
     for _, ingredient in pairs(Recipe.ingredients) do
